@@ -1,9 +1,25 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
-export const Container = styled.aside`
+interface ContainerProps {
+  isMenuOpen: boolean
+}
+
+export const Container = styled.aside<ContainerProps>`
   background-color: ${( {theme} )=> theme.colors.red}; //recebe o parametro, trazer do theme.
 
-  width: 7.75rem; //largura, server para fazer o efeito.
+  //informa para o styled componente q vai por um javascript ou typescript
+  //condicional aberto ou fechado o sidebar
+  ${({ isMenuOpen }) =>
+     isMenuOpen
+    ? css`
+    width: 16.3rem;
+    `
+    : css`
+    width: 7.75rem;
+    `
+  }
+  /* width: 7.75rem; //largura, server para fazer o efeito. */
+  /* width: 16.3rem; */
 
   padding: 2rem 0; //
   overflow: hidden; //eliminar barra de rolagem
@@ -12,6 +28,11 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  //delay na transição de largura
+  transition: width 0.3s;
+
+
 
   //retirando o fundo branco, deixando transparente.
   button {
@@ -88,4 +109,57 @@ export const Container = styled.aside`
       }
     }
   }
+
+  @media (max-width: 720px){
+
+/* colocando para baixo o sidebar */
+position: fixed;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 999;
+
+
+/* colando o sidebar no final fixado */
+width: 100%;
+height: 5rem;
+padding: 0 0;
+overflow-y: auto;
+
+
+/* escondeer o botão */
+button {
+  display: none;
+}
+
+/* alinha os itens  */
+nav {
+  height: 100%;
+  ul{
+    flex-direction: row;
+    align-items: center;
+  }
+  li{
+    a {
+      flex-direction: column;
+      padding: 0rem;
+
+      svg {
+        width: 3.25rem;
+        height: 3.25rem;
+      }
+
+      span {
+        display: none;
+      }
+
+      &.active {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+}
 `
