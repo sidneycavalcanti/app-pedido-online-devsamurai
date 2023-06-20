@@ -1,53 +1,41 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface ContainerProps {
   isMenuOpen: boolean
 }
 
 export const Container = styled.aside<ContainerProps>`
-  background-color: ${( {theme} )=> theme.colors.red}; //recebe o parametro, trazer do theme.
+  background-color: ${({ theme }) => theme.colors.red};
 
-  //informa para o styled componente q vai por um javascript ou typescript
-  //condicional aberto ou fechado o sidebar
   ${({ isMenuOpen }) =>
-     isMenuOpen
-    ? css`
-    width: 16.3rem;
-    `
-    : css`
-    width: 7.75rem;
-    `
-  }
-  /* width: 7.75rem; //largura, server para fazer o efeito. */
-  /* width: 16.3rem; */
+    isMenuOpen
+      ? css`
+          width: 16.3rem;
+        `
+      : css`
+          width: 7.75rem;
+        `}
 
-  padding: 2rem 0; //
-  overflow: hidden; //eliminar barra de rolagem
+  padding: 2rem 0;
+  overflow: hidden;
 
-  //trabalhar em ordem horizontal
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  //delay na transição de largura
   transition: width 0.3s;
 
-
-
-  //retirando o fundo branco, deixando transparente.
   button {
     background: none;
     width: 100%;
     border: none;
   }
 
-  //
   nav {
     flex: 1;
     width: 100%;
     height: 100%;
 
-    // css sas, herda do nav
     ul {
       height: 100%;
       display: flex;
@@ -68,7 +56,7 @@ export const Container = styled.aside<ContainerProps>`
         gap: 2rem;
 
         svg {
-          fill: ${({ theme }) => theme.colors.white}; //adicionando cor a imagem.
+          fill: ${({ theme }) => theme.colors.white};
           width: 4rem;
           height: 4rem;
           transition: fill 0.3s;
@@ -80,7 +68,6 @@ export const Container = styled.aside<ContainerProps>`
           transition: color 0.3s;
         }
 
-        // quando o A do hyper link for ativos
         &.active {
           &::after {
             content: '';
@@ -98,68 +85,62 @@ export const Container = styled.aside<ContainerProps>`
           }
 
           svg {
-            fill: ${({ theme }) => theme.colors.yellow}
+            fill: ${({ theme }) => theme.colors.yellow};
           }
 
           span {
-            color: ${({ theme }) => theme.colors.yellow}
+            color: ${({ theme }) => theme.colors.yellow};
           }
         }
-
       }
     }
   }
 
-  @media (max-width: 720px){
+  @media (max-width: 720px) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
 
-/* colocando para baixo o sidebar */
-position: fixed;
-left: 0;
-right: 0;
-bottom: 0;
-z-index: 999;
+    width: 100%;
+    height: 5rem;
+    overflow-y: auto;
+    padding: 0 0;
 
+    button {
+      display: none;
+    }
 
-/* colando o sidebar no final fixado */
-width: 100%;
-height: 5rem;
-padding: 0 0;
-overflow-y: auto;
+    nav {
+      height: 100%;
 
-
-/* escondeer o botão */
-button {
-  display: none;
-}
-
-/* alinha os itens  */
-nav {
-  height: 100%;
-  ul{
-    flex-direction: row;
-    align-items: center;
-  }
-  li{
-    a {
-      flex-direction: column;
-      padding: 0rem;
-
-      svg {
-        width: 3.25rem;
-        height: 3.25rem;
+      ul {
+        flex-direction: row;
+        align-items: center;
       }
 
-      span {
-        display: none;
-      }
+      li {
+        a {
+          flex-direction: column;
+          padding: 0rem;
 
-      &.active {
-        &::after {
-          display: none;
+          svg {
+            width: 3.25rem;
+            height: 3.25rem;
+          }
+
+          span {
+            display: none;
+          }
+
+          &.active {
+            &::after {
+              display: none;
+            }
+          }
         }
       }
     }
   }
-}
-}
 `

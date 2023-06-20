@@ -1,14 +1,19 @@
-import { Siderbar } from '../../components/Sidebar'
+import { Outlet } from 'react-router-dom' //rendenriza subpastas
+
+import { Sidebar } from '../../components/Sidebar'
+
 import { Container } from './styles'
 
-
-
+import logoImg from '../../assets/logo.svg'
 
 export default function Main() {
   return (
     <Container>
-      <Siderbar />
-      <h1> Main </h1>
+      <Sidebar />
+      <section>
+        <img src={logoImg} />
+        <Outlet />
+      </section>
     </Container>
   )
 }
