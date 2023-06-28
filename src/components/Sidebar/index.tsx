@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom' //cria componente de link, já passa o classname "active"
+import { NavLink } from 'react-router-dom'
 
 import { Container } from './styles'
 
@@ -37,13 +37,13 @@ export function Sidebar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to='bebidas'>
+            <NavLink to='Bebidas'>
               <SodaPopIcon />
               <span>Bebidas</span>
             </NavLink>
           </li>
           <li>
-            <NavLink to='sobremesas'>
+            <NavLink to='Sobremesas'>
               <IceCreamIcon />
               <span>Sorvetes</span>
             </NavLink>

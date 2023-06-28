@@ -1,17 +1,17 @@
-import { darken } from 'polished'//biblioteca para manipular cores
+import { darken } from 'polished'
 
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
-    display: grid;//tabela tipo excel
-    grid-template-columns: repeat(auto-fit, minmax(300px, auto));//templetes das colunas auto ajuste
-    gap: 1.75rem;//distancia
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  gap: 1.75rem;
 
-    @media (max-width: 500px) {
-      grid-template-columns: 1fr;//uma unidade no mobile
-    }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 
-    .snack {
+  .snack {
     position: relative;
     background: ${({ theme }) => theme.colors.black};
     padding: 1.75rem 1.5rem;
@@ -20,9 +20,10 @@ export const Container = styled.div`
     h2 {
       margin-bottom: 0.75rem;
       font-weight: 700;
-      align-items: center;
       font-size: 1.5rem;
+      text-align: center;
     }
+
     img {
       object-fit: cover;
       width: 100%;
@@ -35,18 +36,19 @@ export const Container = styled.div`
       font-size: 0.875rem;
     }
 
-    div{
-      margin-top: .875rem;
+    div {
+      margin-top: 0.875rem;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
 
-      strong{
+      strong {
         font-size: 2rem;
-        font-weight: 500;//peso da fonte
+        font-weight: 500;
       }
 
-      button{
+      button {
         background: ${({ theme }) => theme.colors.red};
         width: 3rem;
         height: 3rem;
@@ -57,19 +59,16 @@ export const Container = styled.div`
         align-items: center;
         justify-content: center;
 
-        svg{
+        svg {
           stroke: ${({ theme }) => theme.colors.white};
-          width: 1.5rem;//largura
-          height: 1.5rem;//altura
+          width: 1.5rem;
+          height: 1.5rem;
         }
 
-        //passar o mouse por cima do botão, muda de cor.
         &:hover {
-          background: ${darken(0.1, '#AA2424')}
+          background: ${darken(0.1, '#AA2424')};
         }
-
       }
     }
-    }
-
+  }
 `
