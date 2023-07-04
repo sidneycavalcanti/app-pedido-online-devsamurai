@@ -8,14 +8,13 @@ import { getBurgers } from '../../../services/api'
 
 export default function Burgers() {
   const [burgers, setBurgers] = useState([])
-  
-  console.log(burgers);
+
   useEffect(() => {
      ;(async() => {
         const burgerRequest = await getBurgers()
 
         setBurgers(burgerRequest.data)
-    })() 
+    })()
   }, [])
 
   return (
