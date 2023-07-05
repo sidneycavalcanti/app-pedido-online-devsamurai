@@ -1,4 +1,4 @@
-import { SkeletonElement } from "./styles"
+import { SkeletonElement } from './styles'
 
 export interface SkeletonProps {
   type: 'title' | 'text' | 'image' | 'thumbnail'
